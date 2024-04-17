@@ -1,9 +1,11 @@
 ﻿# Wathare_InfoTech_Rohan
  
-Frontend
+**Frontend**
 npm install 
+
 npm run dev
 
-Backend
-npm install 
+**Backend**
+npm install
+
 node server
