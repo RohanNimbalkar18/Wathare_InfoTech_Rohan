@@ -1,0 +1,43 @@
+Hashing obs : when mandatory part of the contract is followed (equal objs produce SAME hash code) 
+
+in emp's hashCode
+Added true
+in emp's hashCode
+in emp eq
+Added false
+in emp's hashCode
+in emp eq
+Added false
+in emp's hashCode
+in emp eq
+Added true
+in emp's hashCode
+in emp eq
+in emp eq
+Added true
+size 3
+Employee [empId=rnd-001, name=abc1, salary=10000.0]
+Employee [empId=rnd-003, name=abc3, salary=30000.0]
+Employee [empId=rnd-006, name=abc6, salary=60000.0]
+------------------------
+Hashing obs : when mandatory n optional part of the contract is followed (equal objs produce SAME hash code n un equal objs produce distinct hashcode) 
+in emp's hashCode
+Added true
+in emp's hashCode
+in emp eq
+Added false
+in emp's hashCode
+in emp eq
+Added false
+in emp's hashCode
+Added true
+in emp's hashCode
+Added true
+in emp's hashCode
+Added true
+size 4
+Employee [empId=rnd-006, name=abc6, salary=60000.0]
+Employee [empId=rnd-001, name=abc1, salary=10000.0]
+Employee [empId=rnd-004, name=abc4, salary=40000.0]
+Employee [empId=rnd-003, name=abc3, salary=30000.0]
+

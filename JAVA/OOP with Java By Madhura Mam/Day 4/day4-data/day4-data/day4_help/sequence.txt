@@ -1,0 +1,85 @@
+Today's  Topics 
+Revise
+Collection Framework overview
+Enter 
+Lists
+ArrayList of built in type (eg : Integer List)
+
+ArrayList of UDT (eg : Vehicle List)
+
+
+Options
+
+1. Add Vehicle to the showroom.
+Accept data --validate all i/ps --in case of success -- add vehicle , to the showroom.
+o.w : throw custom exception
+
+2. Display all vehicle details
+Can you use : for loop | for-each  toString ?
+
+
+3. Option : get specific vehicle details
+i/p : chasis no
+o/p : either vehicle details (in case of vehicle found) or err mesg via custom exc!
+
+
+4. Apply discount on a particular vehicle
+i/p : ch no , discount
+o/p : mesg
+
+
+4.5 
+Apply discount on all vehicles produced before a specific date
+i/p : date , discount
+
+
+5. Objective : Avoid creating vehicles n populating all the time , instead start with sample data)
+Add a method in  ShowroomUtils
+ Add a static method to return populated list(sample hardcoded data) of vehicles
+lab work
+
+6. Objective :
+Remove specific vehicle details
+i/p : chasis no
+o/p : valid ch no : del details o.w throw custom exc
+
+
+7. Objective :
+Remove all vehicle details by a specific color
+i/p : color
+If you use for-each n remove(Object o) , JVM throws java.util.ConcurrentModificationException
+Problem to be solved later !
+
+
+Sorting in Java 
+Sorting of Lists
+Collection frmwork supplies readymade sorting algo.
+Implementation : TimSort 
+stable , iterative mergesort , 
+Time complexity < n log(n) 
+API : java.util.Collections
+public static void sort(List<T> list)
+JVM sorts the list elems as per Natural order(asc order)
+
+8. Objective :
+Sort the vehicles as per asc ch no(using natural ordering)
+
+9. Objective :
+Sort the vehicles as per price no(using custom ordering)
+
+
+
+
+Sample Data
+"abc-1233", "white", 456789, "2022-10-20","Honda"
+"abc-1235", "red", 556787, "2023-10-20","Honda"
+"abc-1230", "silver", 256789, "2022-11-25","Maruti"
+"abc-1232", "white", 156789, "2022-01-20","Honda"
+"abc-1239", "white", 496789, "2023-05-25","Mahindra"
+"abc-1237", "red", 676789, "2023-10-10","Honda"
+"abc-1236", "black", 986789, "2022-10-20","Mahindra"
+
+
+
+
+

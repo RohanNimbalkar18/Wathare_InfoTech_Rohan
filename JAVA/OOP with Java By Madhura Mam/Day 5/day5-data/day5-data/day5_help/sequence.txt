@@ -1,0 +1,79 @@
+Revision of Collection Framework overview
+Revise sorting in Java
+Custom ordering in Java 
+Iterator n ListIterator
+Revise ArrayList vs Vector
+ArrayList vs LinkedList
+Enter Sets
+Set Implementation classes
+
+
+0. sort customers as per email (Natural ordering)
+Steps
+public class Customer imple Comparable<Customer>
+{
+......
++
+@Override
+ public int compareTo(Customer anotherCust)
+{
+  return this.email.compareTo(anotherCust.email);
+}
+}
+In Tester :
+
+Collections.sort(customerList);//[c1,c2....,c100]
+JVM invokes internally : Use TimSort ---c1.compareTo(c2) <=0 : no swapping
+>0 swap.....
+
+
+
+
+
+
+
+
+
+1. Solve :
+Given : Fruit class is not abstract.
+What will happen ?
+ArrayList<Fruit> fruits=new AL<>();
+fruits.add(new Mango());
+fruits.add(new Fruit());
+fruits.add(new Apple());
+fruits.add(new Alphonso());
+fruits.add(new Date());//javac err
+fruits.add(new Emp(...));//javax err
+
+
+2. Sort vehicle details as per price 
+
+
+3. Sort vehicle details as per Date n price(w/o modifying Vehicle) -- custom ordering
+using ano inner class.
+
+eg : Collections.sort(list,new Comparator<Vehicle>() {
+  public int compare(Vehicle v1,Vehicle v2)
+  {
+   .....
+  }
+});
+
+
+
+
+4. Iterator n ListIterator
+refer : Collections readme
+refer to code : day5.1\src\test_iterator
+
+
+5.LinkedList
+ Solve TestLinkedList
+
+
+6. 
+
+Enter Sets
+Refer to diagrams n readme
+code : day5.2 /sets
+

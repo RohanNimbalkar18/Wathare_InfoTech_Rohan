@@ -1,0 +1,149 @@
+Revise Hashing algorithm using HashMap
+Map implementation for Banking system
+More Details about generic syntax
+Functional programming 
+
+
+1. NOTE : Hashing algo in HashSet or HashMap is same
+HashSet internally maintains HashMap instance (HashSet HAS-A HashMap)
+eg : HashSet<Emp> --> HashMap <Emp,Object>
+i.e when u call hs.add(e1) --> hm.put(e1,new Object());
+hs.remove(e1) ---> hm.remove(e1);
+
+2. For revision of Hashing algo with HashMap : 
+HashMap<K,V> hm=new HM<>();
+hm.put(k1,v1);//1st entry added
+hm.put(k2,v2);//Given : k1 n k2 have different hashcode => different bucket id
+hm.put(k3,v3); //Given : k1 n k3 have same hashcode => same bucket id
+hm.put(k1,v4); 
+hm.put(k5,v5); //Given : k1 n k5 have same hashcode => same bucket id
+hm.put(null,v6);
+
+How will you explain it ? (With mem diagram)
+
+
+
+3. Start with a fresh scenario
+Banking System
+BankAccount : acctNo, customer name , type(enum :SAVING(10000),CURRENT(5000),FD(50000))  , balance , creation date , last tx date , isActive
+(Later can add HAS-A relationship ,  BankAccount HAS-A KYC => association
+In KYC : customer email , phone no , Aadhar Card No ...) n link KYC info to BakAccount
+)
+
+Ctor , toString : for acct summary
+withdraw , deposit, funds transfer
+
+Business  Rules 
+valid acct type should be chosen
+check min balance condition(it's going to differ as per a/c type) 
+In case of no txs (withdraw , deposit, funds transfer) , in 1 year ,  disable a/c active status(dormant/inactive account)
+If a/c is disabled , bank customer should not be allowed any txs
+
+Options 
+1. Create a/c
+2. Get a/c summary
+3. deposit
+4. withdraw
+5. transfer
+6. apply simple interest : admin
+7. close a/c 
+8. display all accts 
+9. disable a/cs having no tx for 1 yr : admin
+10. sort accts as per acct no
+11. sort accts as per balance....
+12. display customer names of all FD a/c holders.....
+
+
+4. More advanced Generic Syntax 
+Generic methods
+eg : Arrays.asList
+(? , extends , super )
+
+Refer to generic sequence
+
+(? , extends , super )
+
+?  : represents a wild card in generics , can be replaced by ANY type.
+It's un bounded wild card.
+
+extends : represents an upper bound
+? extends T => T or any of it's sub types (upper bounded wild card)
+eg : ? extends Emp => Emp or any of it's sub type (eg : Emp ,Mgr ,Worker.....)
+
+
+super : represent a lower bound
+? super T => T or any of it's super types .
+eg : ? super TempWorker => TempWorker , Worker , Emp ,Objective : 
+Create Utils class --Add static method
+1. Add a method to print all elements from any of the following
+ Test cases : AL<String> , LL<Integer> , Vector<LocalDate> , HS<Double> , LHS,TS
+
+1.5 Add a method to count the number of occurrences of elem in any List
+(lab work )
+	
+2. Add a method to return sum of salary of emps from any List 
+Test cases : AL<Mgr> ,LL<Worker> , Vector<SM> ....
+
+Use : upper bounded wild card 
+eg : public static double computeSumOfSalary(List<? extends Emp> list) 
+{...}
+Any time you use an upper bound(extends) : you can only get the elems from such a collection/list/map BUT you CAN NOT add any elems to it.
+o.w javac err.!
+eg : If user has passed AL<SalesMgr> , how can javac allow to add a worker ?
+
+
+If you want to add elems to any collection :  use lower bound : super keyword
+
+PECS : Producer extends Consumer supers
+=> When the collection is acting as a Producer(i.e you will access/read/get the data from it ) :  use extends
+
+=> When the collection is acting as a Consumer(i.e you will add/write data ) use super 
+
+In case you need both(Producer n Consumer) : do not use any bounds : T
+
+eg : Write a method to add ANY Mgr (SalesMgr/FinanceMgr/HrMgr ) to ANY List(AL/LL/Vector)
+
+Understand :
+public ArrayList​(Collection<? extends E> c)
+E : Emp 
+=>This ctor  creates  : a populated AL , populated from ANY Collection (AL,LL,Vector : no err
+HS,LHS,TS : no err
+HM,LHM ,TM : err)
+having generic type : Emp or it's subtype(eg : Mgr,Worker.....)
+	
+3. Add a method to hire a sales mgr to the list
+What should be the type of the List ?
+
+4. Add a method to hire a temp worker to the list
+What should be the type of the List ?
+
+-----------------------------------------
+
+Enter Functional programming in Java 
+
+Revise Functional i/f n lambda expression.
+
+Explore Existing higher order functions/methods
+
+What is it ?
+Any function (method) that either accepts a behavior OR rets a behavior.
+
+Solve : 
+Create a list of integers n display the same.
+Earlier prog paradigm(style of programming) : imperative style
+(where prog has to specify : WHAT is to be done + HOW it's to be done)
+In FP (functional prog) paradigm : Declarative style
+(where prog has to specify :only  WHAT is to be done)
+eg : In imperative style : 
+     for(int i :list)
+       sop(i);
+OR in FP 
+Iterable<E> has a new default method
+public default void forEach(Consumer<? super E> action) : higher order method
+arg : functional i/f
+java.util.function.Consumer 
+SAM : public void accept(E e)
+Can be replaced by a lambda expression.
+eg : customerList.forEach(customer -> sop(customer));
+
+

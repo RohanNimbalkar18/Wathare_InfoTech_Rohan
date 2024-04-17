@@ -1,0 +1,205 @@
+Revise generic syntax
+Continue with functional programming in Java 
+Functional Streams
+
+
+
+1.
+Solve (What will happen)
+Given : Emp hierarchy
+Emp e =new Mgr(...);//up casting
+e=new Worker(...);
+Emp e=new Mgr(1000);
+List<Emp> emps=new ArrayList<>();
+ emps.add(new Mgr(...));
+emps.add(new TempWorker(...));
+emps=new ArrayList<Mgr>();//javac err : List<Emp> IS NOT a super type of AL<Mgr>
+emps=new Vector<Worker>();//err
+emps=new LinkedList<SalesMgr>();//err
+
+
+List<?> anyList=new ArrayList<>();//no err , deduced type of RHS : Object
+anyList=new ArrayList<Mgr>();//no err
+anyList=new Vector<Worker>();
+anyList=new HashSet<>();//javac err
+anyList=new Vector<LocalDate>();no err
+anyList=new Vector<String>();//no err
+
+Set<? extends Emp> empSet=new HashSet<Mgr>();
+empSet=new TreeSet<HRMgr>();
+empSet=new LinkedHashSet<TempWorker>();
+empSet=new HashSet<String>();//err
+
+
+2. Solve 
+Given standard Fruit hierarchy. Fruit class has a taste() method returning a string. All the sub classes of Fruit have overridden it.
+ 
+Display taste() of all the fruits from the basket (AL/LL/Vector)
+eg : public static void displayTastes(List<? extends Fruit> list)
+{
+ for(Fruit f : list)
+  sop(f.taste());
+}
+
+3. Explain :
+public ArrayList​(Collection<? extends E> c)
+E : Emp
+It creates populated AL of emps from
+ANY Collection(AL/LL/Vector/HS/LHS/TS) of generic type
+Emp or any of it's sub type (Mgr,salesmgr, worker)
+
+
+3.5 
+Conside this method :
+public static double sumOfSalaries(List<? extends Emp> list) {
+		double sum=0;
+		for (Emp e : list)
+			sum += e.computeSalary();
+		return sum;
+}
+For calling this method from the Tester , You will be able to pass ANY List (AL | LL | Vector) of generic type : choose incorrect from below options
+1. Emp
+2. Mgr
+3. SalesMgr
+4. Object
+5. Worker
+6. HRMgr
+7. TempWorker
+8. Date
+9. LocalDate
+10. PermanentWorker
+
+Ans : 4,8,9
+
+4. Now answer this : 
+public static double sumOfSalaries(List<? extends Emp> list) {
+		double sum=0;
+		for (Emp e : list)
+			sum += e.computeSalary();
+		list.add(...);//what can be the legal replacement ?
+		return sum;
+}
+
+1. Emp
+2. Mgr
+3. SalesMgr
+4. Object
+5. Worker
+6. HRMgr
+7. TempWorker
+8. Date
+9. LocalDate
+10. PermanentWorker
+
+Ans : none of above
+
+Why ? : Since the method arg : List<? extends Emp> => caller can pass ANY List of Emp or any of it's sub types (eg : arg : List<Mgr> : u can't add a worker, Emp , Object  to this list 
+List<PermanentWorker> " u can't pass Emp , Mgr , Worker....
+
+So what's the bottom line ? 
+
+When the argument : uses extends (upper bound)  : Collection<? extends E>
+The Collection acts as read only . You CANT add any elems to it !
+o.w : javac err! 
+
+PECS : Producer extends Consumer supers
+Producer(Reader) => Collection acting as a producer of data  ,i.e you can only access(Read) data
+extends 
+
+Consumer(Writer) => Collection acting as a consumer of data  ,i.e you can only add elems
+super
+
+
+eg : Java API eg :
+Collections.addAll
+public static <T> boolean addAll​(Collection<? super T> c, T... elements)
+=> Collection : consumer (super)
+T : Orange
+
+ boolean addAll​(Collection<? super Orange> c, Orange... elements)
+Legal method arg : Any Collection(any List / any Set) of generic type : Orange | Fruit | Object 
+To such a Collection : what all can u add ? Orange or it's subtypes (eg : Mandarine)
+
+eg : MUST Collections.copy(Collection<? super T> dest ,Collection<? extends T> src)
+
+
+	
+3. Add a method to add  Mangoes  to the basket (any set)
+What should be the type of the set ?
+public static void addMangoes(Set<? super Mango> basket, Mango... mangoes)
+{
+   for(Mango m : mangoes)
+   basket.add(m);
+}
+
+
+4. Add a method to add any worker to the list (i.e TempWorker | PermWorker)
+What should be the type of the List ?
+public static void addWorker(List<? super Worker> list)
+{
+   list.add(new Worker(..); //no err
+   list.add(new TempWorker(..);//no
+   list.add(new PermWorker(..);//no
+    list.add(new Object();//err
+list.add(new Emp(..); //err
+list.add(new SalesMgr(....));//err
+}
+-------------------------
+
+3. Functional programming 
+
+
+Explore Existing higher order functions/methods
+
+Copy ready code first.
+
+Solve :  
+1.
+Display all products (from a product list)
+
+2. 
+Remove all the products of a specific category
+
+3. 
+Display all products (from a product map)
+Ans this 
+Is Map Iterable ?
+Can u attach DIRECTLY a for-each loop to the map ? 
+
+Imperative style
+
+Any Declarative (Functional prog solution ?)
+
+
+4. Sort the products from the list , as per date : custom ordering
+How ?
+
+5. Sort the products from the Map , as per price : custom ordering
+How ?
+
+
+6 Use Function literal
+
+
+7. Using above API(higher order funcs) , can you chain multiple operations like sorting & displaying the sorted data ? No
+
+OR
+Filter the elements n display filtered list.  : No (not in single java statement !)
+
+Objective : Accept product category from user
+remove all products from specified category n display remaining list : multiple ops can't be chained !
+
+
+3. Enter Java 8 Functional Streams
+
+Refer to "streams_sequence.txt"
+Refer to <streams> : diagrams
+collections vs streams 
+streams basics
+
+
+
+ 
+
+
+

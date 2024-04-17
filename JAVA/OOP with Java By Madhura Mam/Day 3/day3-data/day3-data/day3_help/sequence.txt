@@ -1,0 +1,103 @@
+Today's  Topics 
+Revise
+Overriding of the equals method
+Additional details of enum
+Modern (Java 8 onwards) Date handling API
+Enter Generic classes
+Collection Framework overview
+
+
+1. Solve this
+Create a BankAccount class : acctNo, IFSC , customer name , type , balance
+Add suitable ctor , toString
+UID : acct no
+2 accounts are same iff their acct nos are same.
+Create 2 bank accounts . Check if they are same or different
+
+Regarding equals 
+Object class's equals :
+public boolean equals(Object o)
+This method rets true iff invoke n arg are referring to the SAME object(ref equality)
+
+Need of overriding equals : 
+To replace ref equality by contents equality (only using UID/ PK)
+
+
+2. Solve this
+Create a BankAccount class : acctNo, IFSC , customer name , type , balance
+Add suitable ctor , toString
+UID : acct no n IFSC (compound PK)
+2 accounts are same iff their acct nos are same.
+Create 2 bank accounts . Check if they are same or different
+
+
+3. Regarding enums
+It represents fixed set of related constants
+eg : AcType : SAVING,CURRENT ...
+enum : keyword in java
+It's combinatation of class n i/f features
+Javac generates lot of code , implicitly for the enums
+1. All enums are compiled into a final class , extends from java.lang.Enum
+2. Data members (eg : SAVING,CURRENT) : self typed constants
+public static final AcType SAVING;
+....
+3. Adds a private ctor , to ensure singleton instance n fixed set of constants
+with 2 args : name , ordinal
+It calls super(name,ordinal) : to init const name n oridnal pos.
+
+4. Adds  a static init block , to invoke private ctor , to init enums
+eg : 
+static {
+  SAVING=new AcType("SAVING",0);
+....
+}
+
+5. Adds methods
+5.1 public static AcType[] values();
+5.2 public static AcType valueOf(String s) throws IllegalArgumentException
+
+6. Inherited methods
+public String name(); --rets name
+public int ordinal();
+public String toString(); --rets name , can be overriden!
+public final boolean equals(Object o) --can't be overriden
+
+Enum implements Comparable<E> 
+public final int compareTo(AcType a) : compares based upon order(ordinal pos)
+
+To chk the equality of enums , what should be used ? equals as well as ==
+(since enum has singleton instance)
+eg : How to print names of FD holders ?
+for(BankAccount a : accts)
+ if(a.getType()==(AcType.FD))
+  sop(a.getName());
+
+
+4. Limitations of Legacy Date Handling API
+1. Limited Date class ctors
+2. For parsing n formatting : had to add SimpleDateFormat 
+parse : PrseExc : checked exc : has to be handled!)
+3. Date , Calendar , GregorainCalendar :
+mutable
+4. If you give incorrect month/day 's value : no exc is thrown ! 
+Confusing to the end user.
+5. Holds date , time , timezone .
+
+Better alternative : Java 8 has introduced : 
+java.time 
+classes : LocalDate , LocalTime ,LocalDateTime, Period, Duration,Instant....
+Refer : "day3-data\day3_help\Java 8 Date n Time related APIs.txt"
+
+
+6. Solve this !
+eg : String s1="abc";
+       String s2=new String(s1);
+sop(s1==s2);//f
+sop(s1.equals(s2));//t
+sop(s1.hashCode()+" "+s2.hashCode());//same , since String class has overridden the hashCode method based on it's char sequence.
+
+7. Now continue with the Vehicle scenario : for testing equals
+and validation rules 
+Refer : day3.3 (eclipse project)
+
+

@@ -1,0 +1,53 @@
+Lab Assignment status ???
+Do you want to solve it in a combined lab ?
+
+Today's topics : 
+Hashing Algorithm in Java (using HashSet)
+Map interface n implementation classes
+Map API
+A fresh case study for Map implementation
+
+
+Objective :
+
+Start with a fresh scenario
+Banking System
+BankAccount : acctNo, customer name , type , balance , creation date , last tx date , isActive
+Ctor , toString : for acct summary
+withdraw , deposit, funds transfer
+
+Business  Rules 
+min balance condition
+valid acct type 
+In case of no txs (withdraw , deposit, funds transfer) , in 1 year ,  disable a/c status
+
+Options 
+1. Create a/c
+2. Get a/c summary
+3. deposit
+4. withdraw
+5. transfer
+6. apply simple interest : admin
+7. close a/c 
+8. display all accts 
+9. disable a/cs having no tx for 1 yr : admin
+10. sort accts as per acct no
+11. sort accts as per balance....
+12. display customer names of all FD a/c holders.....
+....
+
+Choose suitable D.S to support above ops.
+Ensure constant time perf. , for CRUD ops.
+
+: HashMap<Integer,BankAccount>
+------------------------------------------
+
+
+Example of strings having same hashcode
+Aa BB
+Ba CB 
+Ca DB
+Da EB
+BBBB AaBB AaAa BBAa
+FB Ea
+

@@ -1,0 +1,9 @@
+Day 1
+1. Create a new workspace for core Java
+2. import day1.1 in your new workspace
+Refer to readmes n diagrams , from today's help
+3. Revise
+flow, keywords n custom exceptions
+
+4. Complete your pending work
+

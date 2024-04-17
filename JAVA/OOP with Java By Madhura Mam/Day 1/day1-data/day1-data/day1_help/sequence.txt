@@ -1,0 +1,53 @@
+madhura1020.anturkar@gmail.com
+9823205088
+
+What is Exception 
+Run time error , detected by JVM (typically by main thread)
+Why ?
+1. To allow the application to continue , even after the run time errors
+2. Allows separation between Business logic(B.L : try block) n error handling(catch block)
+3. Removes the need of checking the result of validation logic
+
+
+Flow of exec in case of run time err(exception)
+
+throw Throwable instace;  //appears in method def.
+eg : In case of int  div by 0
+throw new ArithematicException("/ by 0");
+BUT for validations / B.L failures , prog uses 
+eg : throw new SpeedOutOfRangeException("You are driving too FAST!!!!");
+to raise a custom exc.
+
+After exc is thrown --JVM alters the flow of exec ---starts searching for matching catch block -
+If present --execs catch n code continues....
+If absent --JVM supplies def exc handlers -- aborts code , printing details(printStackTrace())
+
+
+Custom exceptions(user defined excs)
+Scenario
+1. Validate the speed of a vehicle , running on a highway
+Speed limits : eg 40 -80
+If the speed is within limits , allow driver to continue
+O.w : raise the exc to alert the driver.
+
+2. Driver license validity
+Check if license has expired
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Keywords : try , catch , finally, throw , throws , try-with-resources
+Custom exception

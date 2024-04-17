@@ -1,0 +1,51 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   AcType.java
+
+package com.iacsd.core;
+
+
+public final class AcType extends Enum
+{
+
+    private AcType(String s, int i)
+    {
+        super(s, i);
+    }
+
+    public static AcType[] values()
+    {
+        AcType aactype[];
+        int i;
+        AcType aactype1[];
+        System.arraycopy(aactype = ENUM$VALUES, 0, aactype1 = new AcType[i = aactype.length], 0, i);
+        return aactype1;
+    }
+
+    public static AcType valueOf(String s)
+    {
+        return (AcType)Enum.valueOf(com/iacsd/core/AcType, s);
+    }
+
+    public static final AcType SAVING;
+    public static final AcType CURRENT;
+    public static final AcType FD;
+    public static final AcType DMAT;
+    public static final AcType LOAN;
+    public static final AcType NRE;
+    private static final AcType ENUM$VALUES[];
+
+    static 
+    {
+        SAVING = new AcType("SAVING", 0);
+        CURRENT = new AcType("CURRENT", 1);
+        FD = new AcType("FD", 2);
+        DMAT = new AcType("DMAT", 3);
+        LOAN = new AcType("LOAN", 4);
+        NRE = new AcType("NRE", 5);
+        ENUM$VALUES = (new AcType[] {
+            SAVING, CURRENT, FD, DMAT, LOAN, NRE
+        });
+    }
+}
